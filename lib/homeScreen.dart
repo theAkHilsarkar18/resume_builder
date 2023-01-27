@@ -8,7 +8,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -82,17 +81,124 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 3,
             ),
-            boxUI("Personal Info",Icon(Icons.person,color: Colors.white,size: 20),),
-            boxUI("Contact Info",Icon(Icons.perm_phone_msg,color: Colors.white,size: 20),),
-            boxUI("Education",Icon(Icons.workspace_premium,color: Colors.white,size: 20),),
 
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    topLeft: Radius.circular(3),
+                    topRight: Radius.circular(3)),
+                child: ExpansionTile(
+                  initiallyExpanded: true,
+                  childrenPadding: EdgeInsets.all(20),
+                  backgroundColor: Colors.teal.shade900,
+                  collapsedBackgroundColor: Colors.teal.shade700,
+                  collapsedIconColor: Colors.white,
+                  leading:
+                      const Icon(Icons.person, size: 20, color: Colors.white),
+                  title: const Text(
+                    "Personal Info",
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 15, letterSpacing: 1),
+                  ),
+                  iconColor: Colors.white,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                            width: 100,
+                            child: TextFormField(
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1,
+                                  fontSize: 16),
+                              decoration: InputDecoration(
+                                label: Text(" Name ",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        letterSpacing: 1)),
+                                // prefixIcon: Icon(Icons.person,
+                                //     color: Colors.white, size: 18),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.white, width: 1.5),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                disabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.white, width: 1.5),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                            width: 100,
+                            child: TextFormField(
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1,
+                                  fontSize: 16),
+                              decoration: InputDecoration(
+                                label: Text("Surname",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        letterSpacing: 1)),
+                                // prefixIcon: Icon(Icons.person,
+                                //     color: Colors.white, size: 18),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.white, width: 1.5),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                disabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.white, width: 1.5),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget boxUI(String boxName,Icon iconName) {
+  Widget boxUI(String boxName, Icon iconName) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, top: 5, bottom: 5),
       child: Container(
@@ -121,8 +227,8 @@ class _HomeScreenState extends State<HomeScreen> {
             iconName,
             SizedBox(width: 10),
             Text("$boxName",
-                style:
-                    TextStyle(color: Colors.white, letterSpacing: 1, fontSize: 15)),
+                style: TextStyle(
+                    color: Colors.white, letterSpacing: 1, fontSize: 15)),
           ],
         ),
       ),
