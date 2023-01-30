@@ -11,11 +11,29 @@ class DataScreen extends StatefulWidget {
 class _DataScreenState extends State<DataScreen> {
   @override
   Widget build(BuildContext context) {
-    ModelData m1 = ModalRoute.of(context)!.settings.arguments as ModelData;
+    ModelData md1 = ModalRoute.of(context)!.settings.arguments as ModelData;
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Text(""),
+          child: Column(
+            children: [
+              Text("${md1.modelName}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSurname}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelGender}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modleAddress}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelEmail}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelPhone}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSSC}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelHSC}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelDegree}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSk1}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSk2}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSk3}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelSk4}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelIntrest}",style: TextStyle(color: Colors.black)),
+              Text("${md1.modelObjective}",style: TextStyle(color: Colors.black)),
+            ],
+          ),
         ),
       ),
     );

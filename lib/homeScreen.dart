@@ -9,12 +9,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   //Declaration section for skills
   bool skill1 = true;
   bool skill2 = true;
   bool skill3 = true;
   bool skill4 = true;
+
+  String? sk1;
+  String? sk2;
+  String? sk3;
+  String? sk4;
 
   //Declaration section for radio button
   String selected = "Male";
@@ -32,6 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController hsc = TextEditingController();
   TextEditingController degree = TextEditingController();
   TextEditingController objective = TextEditingController();
+
+  String? txtName;
+  String? txtSurname;
+  String? txtAddress;
+  String? txtEmail;
+  String? txtPhone;
+  String? txtSSC;
+  String? txtHSC;
+  String? txtDegree;
+  String? txtObjective;
 
   @override
   Widget build(BuildContext context) {
@@ -658,7 +672,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Checkbox(
                                     side: BorderSide(
-                                        color: Colors.white, width: 2),
+                                      color: Colors.white,
+                                      width: 2,
+                                    ),
                                     checkColor: Colors.black,
                                     activeColor: Colors.white,
                                     value: skill1,
@@ -1007,32 +1023,108 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               InkWell(
                 onTap: () {
-                  setState(() {
-                    // ModelData m1 = ModelData(modelName: name.text);
-                    // Navigator.pushNamed(context,'screen2',arguments: m1);
+                  txtName = name.text;
+                  txtSurname = surname.text;
+                  txtAddress = address.text;
+                  txtEmail = email.text;
+                  txtPhone = phone.text;
+                  txtSSC = ssc.text;
+                  txtHSC = hsc.text;
+                  txtDegree = degree.text;
+                  txtObjective = objective.text;
+                  //
+                  //
+                  if(skill1==true)
+                    {
+                      sk1 = "C";
+                    }
+                  else
+                    {
+                      sk1 = "";
+                    }
+                  //
+                  //
+                  if(skill2==true)
+                  {
+                    sk2 = "C++";
+                  }
+                  else
+                  {
+                    sk2 = "";
+                  }
+                  //
+                  //
+                  if(skill3==true)
+                  {
+                    sk3 = "Dart";
+                  }
+                  else
+                  {
+                    sk3 = "";
+                  }
+                  //
+                  //
+                  if(skill4==true)
+                  {
+                    sk4 = "Java";
+                  }
+                  else
+                  {
+                    sk4 = "";
+                  }
+                  //
 
+                  setState(() {
+                    ModelData m1 = ModelData(
+                      modelName: txtName,
+                      modelSurname: txtSurname,
+                      modelGender: selected,
+                      modleAddress: txtAddress,
+                      modelEmail: txtEmail,
+                      modelPhone: txtPhone,
+                      modelHSC: txtHSC,
+                      modelSSC: txtSSC,
+                      modelDegree: txtDegree,
+                      modelSk1: sk1,
+                      modelSk2: sk2,
+                      modelSk3: sk3,
+                      modelSk4: sk4,
+                      modelIntrest: selectedIntrest,
+                      modelObjective: txtObjective,
+                    );
+                    Navigator.pushNamed(context, 'screen2', arguments: m1);
                   });
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  child: Text("Generate",style: TextStyle(color: Colors.white,fontSize: 18,letterSpacing: 1)),
+                  child: Text("Generate",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 18, letterSpacing: 1)),
                   height: 40,
                   width: 120,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(
-                      colors: [
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(colors: [
                         Colors.teal.shade700,
                         Colors.teal.shade900,
-                      ]
-                    )
-                  ),
+                      ])),
                 ),
               ),
 
+              SizedBox(height: 50,),
+
+              //Image.asset("assets/w.png"),
+
+              SizedBox(height: 20,),
+
+              ElevatedButton(onPressed: () {
+
+              }, child: Text("Image"),)
             ],
           ),
         ),
