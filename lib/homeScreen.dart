@@ -1,5 +1,7 @@
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:resume_builder/modelclass.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,6 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // declaration for image path
+  String path = "";
+
   //Declaration section for skills
   bool skill1 = true;
   bool skill2 = true;
@@ -112,8 +117,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                         child: SizedBox(
-                          width: 10,
-                        )),
+                      width: 10,
+                    )),
                     Text(
                       "TheAkhilSarkar",
                       style: TextStyle(
@@ -152,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         collapsedIconColor: Colors.white,
                         iconColor: Colors.white,
                         leading:
-                        Icon(Icons.person, color: Colors.white, size: 20),
+                            Icon(Icons.person, color: Colors.white, size: 20),
                         title: Text(
                           "Personal Info",
                           style: TextStyle(
@@ -161,6 +166,35 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 18),
                         ),
                         children: [
+
+                          InkWell(
+                            onTap : ()async{
+                              ImagePicker imagepicker = ImagePicker();
+                              XFile? xfile = await imagepicker.pickImage(source: ImageSource.gallery);
+                              setState(() {
+                                path = xfile!.path;
+                              });
+                            },
+                            child: CircleAvatar(
+                              radius: 60,
+                              child: path.isEmpty
+                                  ? CircleAvatar(
+                                radius: 60,
+                                backgroundImage: AssetImage("assets/person.png"),
+                                backgroundColor: Colors.teal.shade600,
+                              )
+                                  : CircleAvatar(
+                                radius: 60,
+                                backgroundImage: FileImage(
+                                  File("$path"),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 10,
+                          ),
                           Row(
                             children: [
                               Expanded(
@@ -186,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                            BorderRadius.circular(5),
+                                                BorderRadius.circular(5),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -196,10 +230,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   color: Colors.white,
                                                   width: 2),
                                               borderRadius:
-                                              BorderRadius.circular(10)),
+                                                  BorderRadius.circular(10)),
                                           enabledBorder: OutlineInputBorder(
                                               borderRadius:
-                                              BorderRadius.circular(5),
+                                                  BorderRadius.circular(5),
                                               borderSide: BorderSide(
                                                 width: 1.5,
                                                 color: Colors.white,
@@ -213,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     height: 35,
-                                    width: double.infinity,
+                                    width: 200,
                                     child: TextFormField(
                                       controller: surname,
                                       keyboardType: TextInputType.name,
@@ -231,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                            BorderRadius.circular(5),
+                                                BorderRadius.circular(5),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -241,10 +275,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   color: Colors.white,
                                                   width: 2),
                                               borderRadius:
-                                              BorderRadius.circular(10)),
+                                                  BorderRadius.circular(10)),
                                           enabledBorder: OutlineInputBorder(
                                               borderRadius:
-                                              BorderRadius.circular(5),
+                                                  BorderRadius.circular(5),
                                               borderSide: BorderSide(
                                                 width: 1.5,
                                                 color: Colors.white,
@@ -257,92 +291,70 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 40,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                      color: Colors.white, width: 1.5)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Radio(
-                                        activeColor: Colors.white,
-                                        value: "Male",
-                                        groupValue: selected,
-                                        onChanged: (value) {
-                                          setState(
-                                                () {
-                                              selected = value!;
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      Text(
-                                        "Male",
-                                        style: TextStyle(
-                                            letterSpacing: 1,
-                                            color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Radio(
-                                        activeColor: Colors.white,
-                                        value: "Female",
-                                        groupValue: selected,
-                                        onChanged: (value) {
-                                          setState(
-                                                () {
-                                              selected = value!;
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      Text(
-                                        "Female",
-                                        style: TextStyle(
-                                            letterSpacing: 1,
-                                            color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Radio(
-                                        activeColor: Colors.white,
-                                        value: "Other",
-                                        groupValue: selected,
-                                        onChanged: (value) {
-                                          setState(
-                                                () {
-                                              selected = value!;
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      Text(
-                                        "Other",
-                                        style: TextStyle(
-                                            letterSpacing: 1,
-                                            color: Colors.white),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
+                            child: Expanded(
+                              child: Container(
+                                height: 40,
+                                width: 400,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                        color: Colors.white, width: 1.5)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Radio(
+                                          activeColor: Colors.white,
+                                          value: "Male",
+                                          groupValue: selected,
+                                          onChanged: (value) {
+                                            setState(
+                                              () {
+                                                selected = value!;
+                                              },
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          "Male",
+                                          style: TextStyle(
+                                              letterSpacing: 1,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Radio(
+                                          activeColor: Colors.white,
+                                          value: "Female",
+                                          groupValue: selected,
+                                          onChanged: (value) {
+                                            setState(
+                                              () {
+                                                selected = value!;
+                                              },
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          "Female",
+                                          style: TextStyle(
+                                              letterSpacing: 1,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -376,7 +388,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -416,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -456,7 +468,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -492,7 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         collapsedIconColor: Colors.white,
                         iconColor: Colors.white,
                         leading:
-                        Icon(Icons.school, color: Colors.white, size: 20),
+                            Icon(Icons.school, color: Colors.white, size: 20),
                         title: Text(
                           "Education",
                           style: TextStyle(
@@ -505,7 +517,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Column(
                                 children: [
-
                                   Row(
                                     children: [
                                       //1 ssc school name
@@ -532,19 +543,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 border: OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     color: Colors.white,
                                                   ),
                                                 ),
-                                                focusedBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.white, width: 2),
-                                                    borderRadius:
-                                                    BorderRadius.circular(10)),
-                                                enabledBorder: OutlineInputBorder(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Colors.white,
+                                                            width: 2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     width: 1.5,
                                                     color: Colors.white,
@@ -578,19 +593,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               border: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   color: Colors.white,
                                                 ),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                      color: Colors.white, width: 2),
+                                                      color: Colors.white,
+                                                      width: 2),
                                                   borderRadius:
-                                                  BorderRadius.circular(10)),
+                                                      BorderRadius.circular(
+                                                          10)),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   width: 1.5,
                                                   color: Colors.white,
@@ -602,7 +619,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ],
                                   ),
-
                                   Row(
                                     children: [
                                       // 2 hsc school name
@@ -629,19 +645,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 border: OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     color: Colors.white,
                                                   ),
                                                 ),
-                                                focusedBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.white, width: 2),
-                                                    borderRadius:
-                                                    BorderRadius.circular(10)),
-                                                enabledBorder: OutlineInputBorder(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Colors.white,
+                                                            width: 2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     width: 1.5,
                                                     color: Colors.white,
@@ -675,19 +695,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               border: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   color: Colors.white,
                                                 ),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                      color: Colors.white, width: 2),
+                                                      color: Colors.white,
+                                                      width: 2),
                                                   borderRadius:
-                                                  BorderRadius.circular(10)),
+                                                      BorderRadius.circular(
+                                                          10)),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   width: 1.5,
                                                   color: Colors.white,
@@ -700,7 +722,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       // degree college name
                                     ],
                                   ),
-
                                   Row(
                                     children: [
                                       Expanded(
@@ -726,19 +747,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 border: OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     color: Colors.white,
                                                   ),
                                                 ),
-                                                focusedBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.white, width: 2),
-                                                    borderRadius:
-                                                    BorderRadius.circular(10)),
-                                                enabledBorder: OutlineInputBorder(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Colors.white,
+                                                            width: 2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(5),
+                                                      BorderRadius.circular(5),
                                                   borderSide: BorderSide(
                                                     width: 1.5,
                                                     color: Colors.white,
@@ -772,19 +797,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               border: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   color: Colors.white,
                                                 ),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                      color: Colors.white, width: 2),
+                                                      color: Colors.white,
+                                                      width: 2),
                                                   borderRadius:
-                                                  BorderRadius.circular(10)),
+                                                      BorderRadius.circular(
+                                                          10)),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius:
-                                                BorderRadius.circular(5),
+                                                    BorderRadius.circular(5),
                                                 borderSide: BorderSide(
                                                   width: 1.5,
                                                   color: Colors.white,
@@ -796,7 +823,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ],
                                   ),
-
                                 ],
                               ),
                             ],
@@ -910,30 +936,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   )
                                 ],
                               ),
-                              Row(
-                                children: [
-                                  Checkbox(
-                                    side: BorderSide(
-                                        color: Colors.white, width: 2),
-                                    checkColor: Colors.black,
-                                    activeColor: Colors.white,
-                                    value: skill4,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        skill4 = value!;
-                                      });
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "Java",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  )
-                                ],
-                              ),
                             ],
                           ),
                         ],
@@ -976,7 +978,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -1003,7 +1005,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -1030,7 +1032,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -1057,7 +1059,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 value: "Graphics Design",
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -1084,7 +1086,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 value: "UI/UX",
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -1160,7 +1162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderRadius:
-                                          BorderRadius.circular(5),
+                                              BorderRadius.circular(5),
                                           borderSide: BorderSide(
                                             color: Colors.white,
                                           ),
@@ -1169,10 +1171,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             borderSide: BorderSide(
                                                 color: Colors.white, width: 2),
                                             borderRadius:
-                                            BorderRadius.circular(10)),
+                                                BorderRadius.circular(10)),
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                          BorderRadius.circular(5),
+                                              BorderRadius.circular(5),
                                           borderSide: BorderSide(
                                             width: 1.5,
                                             color: Colors.white,
@@ -1210,42 +1212,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   txtUniversity = university.text;
                   //
                   //
-                  if(skill1==true)
-                  {
+                  if (skill1 == true) {
                     sk1 = "C";
-                  }
-                  else
-                  {
+                  } else {
                     sk1 = "";
                   }
                   //
                   //
-                  if(skill2==true)
-                  {
+                  if (skill2 == true) {
                     sk2 = "C++";
-                  }
-                  else
-                  {
+                  } else {
                     sk2 = "";
                   }
                   //
                   //
-                  if(skill3==true)
-                  {
+                  if (skill3 == true) {
                     sk3 = "Dart";
-                  }
-                  else
-                  {
+                  } else {
                     sk3 = "";
                   }
                   //
                   //
-                  if(skill4==true)
-                  {
+                  if (skill4 == true) {
                     sk4 = "Java";
-                  }
-                  else
-                  {
+                  } else {
                     sk4 = "";
                   }
                   //
@@ -1255,7 +1245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelName: txtName,
                       modelSurname: txtSurname,
                       modelGender: selected,
-                      modelAddress : txtAddress,
+                      modelAddress: txtAddress,
                       modelEmail: txtEmail,
                       modelPhone: txtPhone,
                       modelHSC: txtHSC,
@@ -1289,14 +1279,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       ])),
                 ),
               ),
-
-              SizedBox(height: 50,),
-
-              //Image.asset("assets/w.png"),
-
-              SizedBox(height: 20,),
-
-
+              SizedBox(
+                height: 50,
+              ),
+              Image(
+                image: FileImage(
+                  File("$path"),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
