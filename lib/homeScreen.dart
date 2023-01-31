@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:resume_builder/modelclass.dart';
 
@@ -32,8 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController address = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
+  TextEditingController sscSchool = TextEditingController();
   TextEditingController ssc = TextEditingController();
+  TextEditingController hscSchool = TextEditingController();
   TextEditingController hsc = TextEditingController();
+  TextEditingController university = TextEditingController();
   TextEditingController degree = TextEditingController();
   TextEditingController objective = TextEditingController();
 
@@ -43,8 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
   String? txtEmail;
   String? txtPhone;
   String? txtSSC;
+  String? txtSchoolSSC;
   String? txtHSC;
+  String? txtSchoolHSC;
   String? txtDegree;
+  String? txtUniversity;
   String? txtObjective;
 
   @override
@@ -105,8 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                         child: SizedBox(
-                      width: 10,
-                    )),
+                          width: 10,
+                        )),
                     Text(
                       "TheAkhilSarkar",
                       style: TextStyle(
@@ -145,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         collapsedIconColor: Colors.white,
                         iconColor: Colors.white,
                         leading:
-                            Icon(Icons.person, color: Colors.white, size: 20),
+                        Icon(Icons.person, color: Colors.white, size: 20),
                         title: Text(
                           "Personal Info",
                           style: TextStyle(
@@ -179,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(5),
+                                            BorderRadius.circular(5),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -189,10 +196,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   color: Colors.white,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(10)),
+                                              BorderRadius.circular(10)),
                                           enabledBorder: OutlineInputBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(5),
+                                              BorderRadius.circular(5),
                                               borderSide: BorderSide(
                                                 width: 1.5,
                                                 color: Colors.white,
@@ -224,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(5),
+                                            BorderRadius.circular(5),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -234,10 +241,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   color: Colors.white,
                                                   width: 2),
                                               borderRadius:
-                                                  BorderRadius.circular(10)),
+                                              BorderRadius.circular(10)),
                                           enabledBorder: OutlineInputBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(5),
+                                              BorderRadius.circular(5),
                                               borderSide: BorderSide(
                                                 width: 1.5,
                                                 color: Colors.white,
@@ -268,7 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         groupValue: selected,
                                         onChanged: (value) {
                                           setState(
-                                            () {
+                                                () {
                                               selected = value!;
                                             },
                                           );
@@ -293,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         groupValue: selected,
                                         onChanged: (value) {
                                           setState(
-                                            () {
+                                                () {
                                               selected = value!;
                                             },
                                           );
@@ -318,7 +325,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         groupValue: selected,
                                         onChanged: (value) {
                                           setState(
-                                            () {
+                                                () {
                                               selected = value!;
                                             },
                                           );
@@ -369,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                            BorderRadius.circular(10)),
+                                        BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -409,7 +416,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                            BorderRadius.circular(10)),
+                                        BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -449,7 +456,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderSide: BorderSide(
                                             color: Colors.white, width: 2),
                                         borderRadius:
-                                            BorderRadius.circular(10)),
+                                        BorderRadius.circular(10)),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                         borderSide: BorderSide(
@@ -463,6 +470,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+                  //
+                  //
+
                   //education
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -482,7 +492,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         collapsedIconColor: Colors.white,
                         iconColor: Colors.white,
                         leading:
-                            Icon(Icons.school, color: Colors.white, size: 20),
+                        Icon(Icons.school, color: Colors.white, size: 20),
                         title: Text(
                           "Education",
                           style: TextStyle(
@@ -491,145 +501,303 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 18),
                         ),
                         children: [
-                          Row(
+                          Column(
                             children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 35,
-                                    width: double.infinity,
-                                    child: TextFormField(
-                                      controller: ssc,
-                                      keyboardType: TextInputType.number,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        letterSpacing: 1,
-                                      ),
-                                      decoration: InputDecoration(
-                                        labelText: "SSC %",
-                                        labelStyle: TextStyle(
-                                          letterSpacing: 1,
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
+                              Column(
+                                children: [
+
+                                  Row(
+                                    children: [
+                                      //1 ssc school name
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            height: 35,
+                                            width: 200,
+                                            child: TextFormField(
+                                              controller: sscSchool,
+                                              keyboardType: TextInputType.name,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white,
+                                                letterSpacing: 1,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: "School Name",
+                                                labelStyle: TextStyle(
+                                                  letterSpacing: 1,
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                ),
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                focusedBorder: OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.white, width: 2),
+                                                    borderRadius:
+                                                    BorderRadius.circular(10)),
+                                                enabledBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    width: 1.5,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            width: 1.5,
-                                            color: Colors.white,
+                                      ),
+                                      // ssc
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 35,
+                                          width: 80,
+                                          child: TextFormField(
+                                            controller: ssc,
+                                            keyboardType: TextInputType.number,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              letterSpacing: 1,
+                                            ),
+                                            decoration: InputDecoration(
+                                              labelText: "SSC %",
+                                              labelStyle: TextStyle(
+                                                letterSpacing: 1,
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                              ),
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.white, width: 2),
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  width: 1.5,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 35,
-                                    width: double.infinity,
-                                    child: TextFormField(
-                                      controller: hsc,
-                                      keyboardType: TextInputType.number,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        letterSpacing: 1,
-                                      ),
-                                      decoration: InputDecoration(
-                                        labelText: "HSC %",
-                                        labelStyle: TextStyle(
-                                          letterSpacing: 1,
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
+
+                                  Row(
+                                    children: [
+                                      // 2 hsc school name
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            height: 35,
+                                            width: 300,
+                                            child: TextFormField(
+                                              controller: hscSchool,
+                                              keyboardType: TextInputType.name,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white,
+                                                letterSpacing: 1,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: "School Name",
+                                                labelStyle: TextStyle(
+                                                  letterSpacing: 1,
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                ),
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                focusedBorder: OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.white, width: 2),
+                                                    borderRadius:
+                                                    BorderRadius.circular(10)),
+                                                enabledBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    width: 1.5,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            width: 1.5,
-                                            color: Colors.white,
+                                      ),
+                                      //hsc
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 35,
+                                          width: 80,
+                                          child: TextFormField(
+                                            controller: hsc,
+                                            keyboardType: TextInputType.number,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              letterSpacing: 1,
+                                            ),
+                                            decoration: InputDecoration(
+                                              labelText: "HSC %",
+                                              labelStyle: TextStyle(
+                                                letterSpacing: 1,
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                              ),
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.white, width: 2),
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  width: 1.5,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
+                                      // degree college name
+                                    ],
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 35,
-                                    width: double.infinity,
-                                    child: TextFormField(
-                                      controller: degree,
-                                      keyboardType: TextInputType.name,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        letterSpacing: 1,
-                                      ),
-                                      decoration: InputDecoration(
-                                        labelText: "Degree",
-                                        labelStyle: TextStyle(
-                                          letterSpacing: 1,
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
+
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            height: 35,
+                                            width: 300,
+                                            child: TextFormField(
+                                              controller: university,
+                                              keyboardType: TextInputType.name,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white,
+                                                letterSpacing: 1,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: "University Name",
+                                                labelStyle: TextStyle(
+                                                  letterSpacing: 1,
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                ),
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                focusedBorder: OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.white, width: 2),
+                                                    borderRadius:
+                                                    BorderRadius.circular(10)),
+                                                enabledBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(5),
+                                                  borderSide: BorderSide(
+                                                    width: 1.5,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white, width: 2),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: BorderSide(
-                                            width: 1.5,
-                                            color: Colors.white,
+                                      ),
+                                      // degree
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: Container(
+                                          height: 35,
+                                          width: 100,
+                                          child: TextFormField(
+                                            controller: degree,
+                                            keyboardType: TextInputType.name,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              letterSpacing: 1,
+                                            ),
+                                            decoration: InputDecoration(
+                                              labelText: "Degree",
+                                              labelStyle: TextStyle(
+                                                letterSpacing: 1,
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                              ),
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.white, width: 2),
+                                                  borderRadius:
+                                                  BorderRadius.circular(10)),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                borderSide: BorderSide(
+                                                  width: 1.5,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ),
+
+                                ],
                               ),
                             ],
                           ),
@@ -808,7 +976,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                    () {
+                                        () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -835,7 +1003,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                    () {
+                                        () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -862,7 +1030,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 groupValue: selectedIntrest,
                                 onChanged: (value) {
                                   setState(
-                                    () {
+                                        () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -889,7 +1057,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 value: "Graphics Design",
                                 onChanged: (value) {
                                   setState(
-                                    () {
+                                        () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -916,7 +1084,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 value: "UI/UX",
                                 onChanged: (value) {
                                   setState(
-                                    () {
+                                        () {
                                       selectedIntrest = value!;
                                     },
                                   );
@@ -992,7 +1160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         border: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(5),
+                                          BorderRadius.circular(5),
                                           borderSide: BorderSide(
                                             color: Colors.white,
                                           ),
@@ -1001,10 +1169,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             borderSide: BorderSide(
                                                 color: Colors.white, width: 2),
                                             borderRadius:
-                                                BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius:
-                                              BorderRadius.circular(5),
+                                          BorderRadius.circular(5),
                                           borderSide: BorderSide(
                                             width: 1.5,
                                             color: Colors.white,
@@ -1037,16 +1205,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   txtHSC = hsc.text;
                   txtDegree = degree.text;
                   txtObjective = objective.text;
+                  txtSchoolSSC = sscSchool.text;
+                  txtSchoolHSC = hscSchool.text;
+                  txtUniversity = university.text;
                   //
                   //
                   if(skill1==true)
-                    {
-                      sk1 = "C";
-                    }
+                  {
+                    sk1 = "C";
+                  }
                   else
-                    {
-                      sk1 = "";
-                    }
+                  {
+                    sk1 = "";
+                  }
                   //
                   //
                   if(skill2==true)
@@ -1084,10 +1255,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelName: txtName,
                       modelSurname: txtSurname,
                       modelGender: selected,
-                      modleAddress: txtAddress,
+                      modelAddress : txtAddress,
                       modelEmail: txtEmail,
                       modelPhone: txtPhone,
                       modelHSC: txtHSC,
+                      modelHscSchool: txtSchoolSSC,
+                      modelSscSchool: txtSchoolSSC,
+                      modelUniversity: txtUniversity,
                       modelSSC: txtSSC,
                       modelDegree: txtDegree,
                       modelSk1: sk1,
@@ -1122,9 +1296,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               SizedBox(height: 20,),
 
-              ElevatedButton(onPressed: () {
 
-              }, child: Text("Image"),)
             ],
           ),
         ),
