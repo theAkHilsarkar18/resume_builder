@@ -1263,6 +1263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelObjective: txtObjective,
                     );
                     Navigator.pushNamed(context, 'screen2', arguments: m1);
+                    pdfGenerator(ModelData());
                   });
                 },
                 child: Container(
@@ -1284,7 +1285,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20,),
 
               ElevatedButton(onPressed: () {
-                pdfGenerator();
+                pdfGenerator(ModelData());
               }, child: Text("Pdf"),),
 
             ],

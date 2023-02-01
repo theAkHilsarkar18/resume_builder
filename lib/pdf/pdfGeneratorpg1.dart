@@ -1,12 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pd;
+import 'package:resume_builder/modelclass.dart';
 
-void pdfGenerator() async {
+void pdfGenerator(ModelData m1) async {
   final pdf = pd.Document();
   pdf.addPage(
     pd.Page(
@@ -18,11 +18,11 @@ void pdfGenerator() async {
           mainAxisAlignment: pd.MainAxisAlignment.center,
           children: [
             pd.Text(
-              "Hii",
+              "${m1.modelName}",
               style: pd.TextStyle(color: PdfColors.blue, fontSize: 50),
             ),
             pd.Text(
-              "Hii",
+              "${m1.modelSurname}",
               style: pd.TextStyle(color: PdfColors.blue, fontSize: 50),
             ),
           ],
@@ -32,7 +32,7 @@ void pdfGenerator() async {
   );
 
   Directory? directory = await getExternalStorageDirectory();
-  var file = File("${directory!.path}/123.pdf");
+  var file = File("${directory!.path}/resume.pdf");
   print(file.path);
   await file.writeAsBytes(await pdf.save());
 }
