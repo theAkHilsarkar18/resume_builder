@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resume_builder/modelclass.dart';
+import 'package:resume_builder/pdf/pdfGeneratorpg1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -134,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                height: 3,
+                height: 15,
               ),
               Column(
                 children: [
@@ -1194,7 +1195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               SizedBox(
-                height: 100,
+                height: 30,
               ),
               InkWell(
                 onTap: () {
@@ -1274,22 +1275,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       gradient: LinearGradient(colors: [
-                        Colors.teal.shade700,
-                        Colors.teal.shade900,
+                        Colors.teal.shade600,
+                        Colors.teal.shade800,
                       ])),
                 ),
               ),
-              SizedBox(
-                height: 50,
-              ),
-              Image(
-                image: FileImage(
-                  File("$path"),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+
+              const SizedBox(height: 20,),
+
+              ElevatedButton(onPressed: () {
+                pdfGenerator();
+              }, child: Text("Pdf"),),
+
             ],
           ),
         ),
