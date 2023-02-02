@@ -123,7 +123,7 @@ class _Template1State extends State<Template1> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Education",
+                              "Address",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -145,7 +145,6 @@ class _Template1State extends State<Template1> {
                             ),
                           ),
 
-
                         ],
                       ),
                     ),
@@ -154,8 +153,6 @@ class _Template1State extends State<Template1> {
                     height: 20,
                   ),
                   //
-
-
                 ],
               ),
             ),
@@ -297,7 +294,10 @@ class _Template1State extends State<Template1> {
                       ],
                     ),
                   ),
-
+                  SizedBox(height: 20),
+                  Container(decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.teal.shade800,width: 1.5,),),),child: Text("Objective",style: TextStyle(fontSize: 15,letterSpacing: 1,fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 10,),
+                  Text("To obtain employment with a \ncompany that offers a positive \natmosphere to learn and \nimplement new skills.",style: TextStyle(fontSize: 9,letterSpacing: 1),),
                 ],
               ),
             ),

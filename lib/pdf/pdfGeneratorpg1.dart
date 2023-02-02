@@ -5,8 +5,26 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pd;
 import 'package:resume_builder/modelclass.dart';
+import 'package:flutter/material.dart';
+
+class pdfGen extends StatefulWidget {
+  const pdfGen({Key? key}) : super(key: key);
+
+  @override
+  State<pdfGen> createState() => _pdfGenState();
+}
+
+class _pdfGenState extends State<pdfGen> {
+
+  @override
+  Widget build(BuildContext context) {
+    ModelData m1 = ModalRoute.of(context)!.settings.arguments as ModelData;
+    return SafeArea(child: Scaffold(),);
+  }
+}
 
 void pdfGenerator(ModelData m1) async {
+
   final pdf = pd.Document();
   pdf.addPage(
     pd.Page(
