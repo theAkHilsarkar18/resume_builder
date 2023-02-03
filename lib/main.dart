@@ -9,7 +9,7 @@ void main()
     MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/' : (context) => Template1(),
+        '/' : (context) => HomeScreen(),
         'screen2' : (context) => DataScreen(),
         'temp1' : (context) => Template1(),
       }

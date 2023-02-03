@@ -28,7 +28,7 @@ class _Template1State extends State<Template1> {
                     height: 10,
                   ),
                   CircleAvatar(
-                    backgroundImage: AssetImage("assets/person.png"),
+                    backgroundImage: AssetImage("assets/images/person.png"),
                     backgroundColor: Colors.teal.shade400,
                     radius: 45,
                   ),
@@ -65,7 +65,7 @@ class _Template1State extends State<Template1> {
                       width: 110,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const [
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -136,7 +136,7 @@ class _Template1State extends State<Template1> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "A-107,Khodiyar chembers, Anjaninagar society , punagam , surat - 395010",
+                              "A-107,Khodiyar chambers, Anjaninagar society , Punagam , Surat - 395010",
                               style: TextStyle(
                                 color: Colors.white,
                                 letterSpacing: 1,

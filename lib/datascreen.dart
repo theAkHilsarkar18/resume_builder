@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:resume_builder/modelclass.dart';
 
@@ -17,6 +19,10 @@ class _DataScreenState extends State<DataScreen> {
         body: Center(
           child: Column(
             children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: FileImage(File("${md1.modelPath}")),
+              ),
               Text("${md1.modelName}",style: TextStyle(color: Colors.black)),
               Text("${md1.modelSurname}",style: TextStyle(color: Colors.black)),
               Text("${md1.modelGender}",style: TextStyle(color: Colors.black)),

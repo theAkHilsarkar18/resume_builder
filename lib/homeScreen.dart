@@ -34,18 +34,18 @@ class _HomeScreenState extends State<HomeScreen> {
   String selectedIntrest = "Flutter Development";
 
   //TextEditing Controller
-  TextEditingController name = TextEditingController();
-  TextEditingController surname = TextEditingController();
-  TextEditingController address = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController sscSchool = TextEditingController();
-  TextEditingController ssc = TextEditingController();
-  TextEditingController hscSchool = TextEditingController();
-  TextEditingController hsc = TextEditingController();
-  TextEditingController university = TextEditingController();
-  TextEditingController degree = TextEditingController();
-  TextEditingController objective = TextEditingController();
+  TextEditingController name = TextEditingController(text: "Akhil");
+  TextEditingController surname = TextEditingController(text: "Sodvadiya");
+  TextEditingController address = TextEditingController(text:  "A-107,Khodiyar chambers, Anjaninagar society , Punagam , Surat - 395010");
+  TextEditingController email = TextEditingController(text: "akhilsodvadiya@gmail.com");
+  TextEditingController phone = TextEditingController(text: "9825486060");
+  TextEditingController sscSchool = TextEditingController(text: "Rajkot Gurukul");
+  TextEditingController ssc = TextEditingController(text: "80");
+  TextEditingController hscSchool = TextEditingController(text: "Rajkot Gurukul");
+  TextEditingController hsc = TextEditingController(text: "70");
+  TextEditingController university = TextEditingController(text: "Swarnim University");
+  TextEditingController degree = TextEditingController(text: "BCA");
+  TextEditingController objective = TextEditingController(text: "To obtain employment with a \ncompany that offers a positive \natmosphere to learn and \nimplement new skills.");
 
   String? txtName;
   String? txtSurname;
@@ -59,9 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
   String? txtDegree;
   String? txtUniversity;
   String? txtObjective;
+  String imgPath = "";
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -181,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: path.isEmpty
                                   ? CircleAvatar(
                                 radius: 60,
-                                backgroundImage: AssetImage("assets/person.png"),
+                                backgroundImage: AssetImage("assets/images/person.png"),
                                 backgroundColor: Colors.teal.shade600,
                               )
                                   : CircleAvatar(
@@ -362,13 +364,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              height: 50,
+                              height: 60,
                               width: double.infinity,
                               child: TextFormField(
                                 controller: address,
                                 keyboardType: TextInputType.name,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Colors.white,
                                   letterSpacing: 1,
                                 ),
@@ -1261,16 +1263,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelSk4: sk4,
                       modelIntrest: selectedIntrest,
                       modelObjective: txtObjective,
+                      modelPath: path,
                     );
                     Navigator.pushNamed(context, 'screen2', arguments: m1);
-                    pdfGenerator(ModelData());
+                    pdfGenerator(m1);
                   });
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  child: Text("Generate",
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 18, letterSpacing: 1)),
                   height: 40,
                   width: 120,
                   decoration: BoxDecoration(
@@ -1279,15 +1279,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Colors.teal.shade600,
                         Colors.teal.shade800,
                       ])),
+                  child: const Text("Generate",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 18, letterSpacing: 1)),
                 ),
               ),
 
               const SizedBox(height: 20,),
-
-              ElevatedButton(onPressed: () {
-                pdfGenerator(ModelData());
-              }, child: Text("Pdf"),),
-
             ],
           ),
         ),

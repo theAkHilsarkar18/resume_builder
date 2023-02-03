@@ -16,7 +16,8 @@ class ModelData {
       modelSk3,
       modelSk4,
       modelIntrest,
-      modelObjective;
+      modelObjective,
+      modelPath;
 
   ModelData({
     this.modelName,
@@ -37,5 +38,6 @@ class ModelData {
     this.modelIntrest,
     this.modelDegree,
     this.modelObjective,
+    this.modelPath,
   });
 }
