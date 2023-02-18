@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resume_builder/modelclass.dart';
 import 'package:resume_builder/pdf/pdfGeneratorpg1.dart';
+import 'package:resume_builder/pdf/pdfGeneratorpg2.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -1265,8 +1266,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelObjective: txtObjective,
                       modelPath: path,
                     );
-                    Navigator.pushNamed(context, 'screen2', arguments: m1);
                     pdfGenerator(m1);
+                    Navigator.pushNamed(context, 'screen2', arguments: m1);
+
+                    //pdfGeneratorpg2();
                   });
                 },
                 child: Container(

@@ -11,7 +11,8 @@ void main()
     MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/' : (context) => Template2(),
+        '/' : (context) => HomeScreen(),
+        '/temp2' : (context) => Template2(),
         'selection' : (context) => SelectionScreen(),
         'screen2' : (context) => DataScreen(),
         'temp1' : (context) => Template1(),
