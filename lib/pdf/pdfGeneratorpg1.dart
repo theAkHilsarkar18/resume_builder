@@ -315,10 +315,9 @@ void pdfGenerator(ModelData m1) async {
   );
 
   Directory? directory = await getExternalStorageDirectory();
-  var file = File("${directory!.path}/akhil.pdf");
+  var file = File("${directory!.path}/a.pdf");
   print("-------------------------------------------------------------------------------------------------------------------------------------");
   print(file.path);
   print("-------------------------------------------------------------------------------------------------------------------------------------");
-
   await file.writeAsBytes(await pdf.save());
 }

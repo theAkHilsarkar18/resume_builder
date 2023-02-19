@@ -1267,6 +1267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       modelPath: path,
                     );
                     pdfGenerator(m1);
+                    //pdfGeneratorpg2();
                     Navigator.pushNamed(context, 'screen2', arguments: m1);
 
                     //pdfGeneratorpg2();

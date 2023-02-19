@@ -469,17 +469,17 @@ Future<void> pdfGeneratorpg2() async {
                 ),
               ],
             ),
-            pd.Transform.translate(
-              offset: PdfPoint(20, 120),
-              child: pd.Container(
-                height: 110,
-                width: 110,
-                color: PdfColors.white,
-                child: pd.Image(
-                  "assets/images/person.png" as pd.ImageProvider,
-                ),
-              ),
-            ),
+            // pd.Transform.translate(
+            //   offset: PdfPoint(20, 120),
+            //   child: pd.Container(
+            //     height: 110,
+            //     width: 110,
+            //     color: PdfColors.white,
+            //     child: pd.Image(
+            //       "assets/images/person.png" as pd.ImageProvider,
+            //     ),
+            //   ),
+            // ),
           ],
         );
       },
@@ -488,10 +488,10 @@ Future<void> pdfGeneratorpg2() async {
 
 
   Directory? directory = await getExternalStorageDirectory();
-  var file = File("${directory!.path}/pdf2.pdf");
-  print("---------------------------------------------------------------------------------------\n");
-  print("${file.path}");
-  print("\n---------------------------------------------------------------------------------------");
+  var file = File("${directory!.path}/a.pdf");
+  print("-------------------------------------------------------------------------------------------------------------------------------------");
+  print(file.path);
+  print("-------------------------------------------------------------------------------------------------------------------------------------");
   await file.writeAsBytes(await pdf.save());
 
 }
